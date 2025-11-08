@@ -1,0 +1,8 @@
+ultralytics==8.0.210
+twilio==8.10.1
+opencv-python==4.8.1.78
+python-dotenv==1.0.0
+numpy==1.26.4
+flask==2.3.3
+werkzeug==2.3.7
+pillow==10.0.1

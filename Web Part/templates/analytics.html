@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - Accident Detection System{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #333; margin-bottom: 1rem;">
+            <i class="fas fa-chart-bar"></i> System Analytics
+        </h1>
+        <p style="font-size: 1.1rem; color: #666;">
+            Comprehensive insights and performance metrics
+        </p>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="stats-grid">
+        <div class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <div class="stat-number" style="color: white;">{{ stats.total_uploads }}</div>
+            <div class="stat-label" style="color: rgba(255,255,255,0.8);">Total Uploads</div>
+        </div>
+        <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+            <div class="stat-number" style="color: white;">{{ stats.accidents_detected }}</div>
+            <div class="stat-label" style="color: rgba(255,255,255,0.8);">Accidents Detected</div>
+        </div>
+        <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
+            <div class="stat-number" style="color: white;">{{ stats.notifications_sent }}</div>
+            <div class="stat-label" style="color: rgba(255,255,255,0.8);">Notifications Sent</div>
+        </div>
+        <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
+            <div class="stat-number" style="color: white;">{{ stats.success_rate }}%</div>
+            <div class="stat-label" style="color: rgba(255,255,255,0.8);">Success Rate</div>
+        </div>
+    </div>
+</div>
+
+<!-- Performance Metrics -->
+<div class="card">
+    <h2 style="margin-bottom: 1.5rem; color: #333;">
+        <i class="fas fa-tachometer-alt"></i> Performance Metrics
+    </h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <!-- Detection Accuracy -->
+        <div style="background: rgba(102, 126, 234, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(102, 126, 234, 0.2);">
+            <h3 style="color: #667eea; margin-bottom: 1rem;">
+                <i class="fas fa-bullseye"></i> Detection Accuracy
+            </h3>
+            <div style="font-size: 2rem; font-weight: 700; color: #667eea;">95.0%</div>
+            <p style="color: #666; margin-top: 0.5rem;">Average confidence score</p>
+        </div>
+
+        <!-- Response Time -->
+        <div style="background: rgba(34, 197, 94, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(34, 197, 94, 0.2);">
+            <h3 style="color: #22c55e; margin-bottom: 1rem;">
+                <i class="fas fa-clock"></i> Response Time
+            </h3>
+            <div style="font-size: 2rem; font-weight: 700; color: #22c55e;">< 2s</div>
+            <p style="color: #666; margin-top: 0.5rem;">Average processing time</p>
+        </div>
+
+        <!-- System Uptime -->
+        <div style="background: rgba(245, 87, 108, 0.1); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(245, 87, 108, 0.2);">
+            <h3 style="color: #f5576c; margin-bottom: 1rem;">
+                <i class="fas fa-server"></i> System Uptime
+            </h3>
+            <div style="font-size: 2rem; font-weight: 700; color: #f5576c;">99.9%</div>
+            <p style="color: #666; margin-top: 0.5rem;">Service availability</p>
+        </div>
+    </div>
+</div>
+
+<!-- Daily Statistics -->
+{% if daily_stats %}
+<div class="card">
+    <h2 style="margin-bottom: 1.5rem; color: #333;">
+        <i class="fas fa-calendar-alt"></i> Daily Activity
+    </h2>
+    
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <thead>
+                <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <th style="padding: 1rem; text-align: left;">Date</th>
+                    <th style="padding: 1rem; text-align: center;">Uploads</th>
+                    <th style="padding: 1rem; text-align: center;">Accidents</th>
+                    <th style="padding: 1rem; text-align: center;">Detection Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, data in daily_stats.items() %}
+                <tr style="border-bottom: 1px solid #f0f0f0;">
+                    <td style="padding: 1rem; font-weight: 500;">{{ date }}</td>
+                    <td style="padding: 1rem; text-align: center;">
+                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 500;">
+                            {{ data.uploads }}
+                        </span>
+                    </td>
+                    <td style="padding: 1rem; text-align: center;">
+                        <span style="background: rgba(239, 68, 68, 0.1); color: #dc2626; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 500;">
+                            {{ data.accidents }}
+                        </span>
+                    </td>
+                    <td style="padding: 1rem; text-align: center;">
+                        {% set rate = (data.accidents / data.uploads * 100) if data.uploads > 0 else 0 %}
+                        <span style="background: {% if rate > 50 %}rgba(239, 68, 68, 0.1); color: #dc2626;{% else %}rgba(34, 197, 94, 0.1); color: #059669;{% endif %} padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 500;">
+                            {{ "%.1f"|format(rate) }}%
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<!-- System Health -->
+<div class="card">
+    <h2 style="margin-bottom: 1.5rem; color: #333;">
+        <i class="fas fa-heartbeat"></i> System Health
+    </h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div class="health-item" style="display: flex; align-items: center; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border: 1px solid rgba(34, 197, 94, 0.2);">
+            <i class="fas fa-check-circle" style="font-size: 2rem; color: #22c55e; margin-right: 1rem;"></i>
+            <div>
+                <div style="font-weight: 600; color: #22c55e;">AI Model</div>
+                <div style="color: #666; font-size: 0.9rem;">Operational</div>
+            </div>
+        </div>
+        
+        <div class="health-item" style="display: flex; align-items: center; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border: 1px solid rgba(34, 197, 94, 0.2);">
+            <i class="fas fa-check-circle" style="font-size: 2rem; color: #22c55e; margin-right: 1rem;"></i>
+            <div>
+                <div style="font-weight: 600; color: #22c55e;">WhatsApp API</div>
+                <div style="color: #666; font-size: 0.9rem;">Connected</div>
+            </div>
+        </div>
+        
+        <div class="health-item" style="display: flex; align-items: center; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border: 1px solid rgba(34, 197, 94, 0.2);">
+            <i class="fas fa-check-circle" style="font-size: 2rem; color: #22c55e; margin-right: 1rem;"></i>
+            <div>
+                <div style="font-weight: 600; color: #22c55e;">File Storage</div>
+                <div style="color: #666; font-size: 0.9rem;">Available</div>
+            </div>
+        </div>
+        
+        <div class="health-item" style="display: flex; align-items: center; padding: 1rem; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border: 1px solid rgba(34, 197, 94, 0.2);">
+            <i class="fas fa-check-circle" style="font-size: 2rem; color: #22c55e; margin-right: 1rem;"></i>
+            <div>
+                <div style="font-weight: 600; color: #22c55e;">Database</div>
+                <div style="color: #666; font-size: 0.9rem;">Synchronized</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Accident Detection System{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="card">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <h1 style="font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">
+                <i class="fas fa-car-crash"></i> AccidentGuard AI
+            </h1>
+            <p style="font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto;">
+                Advanced AI-powered accident detection system with instant WhatsApp notifications for emergency response
+            </p>
+        </div>
+
+        <!-- System Stats -->
+        {% if stats %}
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.total_uploads }}</div>
+                <div class="stat-label">Total Uploads</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.accidents_detected }}</div>
+                <div class="stat-label">Accidents Detected</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.notifications_sent }}</div>
+                <div class="stat-label">Notifications Sent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.success_rate }}%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Upload Section -->
+        <div class="upload-section" style="text-align: center; margin: 3rem 0;">
+            <h2 style="margin-bottom: 1rem; color: #333;">
+                <i class="fas fa-upload"></i> Upload Media for Analysis
+            </h2>
+            <p style="color: #666; margin-bottom: 2rem;">
+                Upload images or videos to detect accidents using our advanced AI system
+            </p>
+
+            <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+                <div class="file-upload-area" style="border: 2px dashed #667eea; border-radius: 15px; padding: 3rem; margin: 2rem 0; background: rgba(102, 126, 234, 0.05); transition: all 0.3s;">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"></i>
+                    <div>
+                        <input type="file" name="uploadedImage" id="uploadedImage" accept=".jpg,.jpeg,.png,.gif,.mp4,.avi,.mov" required style="display: none;">
+                        <label for="uploadedImage" class="btn" style="cursor: pointer;">
+                            <i class="fas fa-plus"></i> Choose File
+                        </label>
+                    </div>
+                    <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        Supported formats: JPG, PNG, GIF, MP4, AVI, MOV
+                    </p>
+                </div>
+                
+                <button type="submit" class="btn" style="font-size: 1.1rem; padding: 15px 30px;">
+                    <i class="fas fa-search"></i> Analyze for Accidents
+                </button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        {% if accident_detected is defined %}
+        <div class="results-section">
+            {% if accident_detected %}
+                <div class="alert alert-danger" style="text-align: center; padding: 2rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                        <i class="fas fa-exclamation-triangle"></i> ACCIDENT DETECTED!
+                    </h2>
+                    <p><strong>File:</strong> {{ filename }}</p>
+                    
+                    {% if detection_details %}
+                        <div style="margin: 1.5rem 0;">
+                            <h3>Detection Details:</h3>
+                            {% for detail in detection_details %}
+                                <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+                                    <strong>Type:</strong> {{ detail.class }} | 
+                                    <strong>Confidence:</strong> {{ detail.confidence }}%
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    {% if whatsapp_sent %}
+                        <div style="background: rgba(34, 197, 94, 0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                            <i class="fas fa-check-circle"></i> WhatsApp notification sent successfully!
+                        </div>
+                    {% else %}
+                        <div style="background: rgba(239, 68, 68, 0.2); padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                            <i class="fas fa-times-circle"></i> Failed to send WhatsApp notification
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="alert alert-success" style="text-align: center; padding: 2rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                        <i class="fas fa-check-circle"></i> No Accident Detected
+                    </h2>
+                    <p><strong>File:</strong> {{ filename }}</p>
+                    <p style="margin-top: 1rem;">The uploaded file appears to be safe with no accidents detected.</p>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Features Section -->
+        <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0;">
+            <div class="feature-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.7); border-radius: 15px;">
+                <i class="fas fa-brain" style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3>AI-Powered Detection</h3>
+                <p style="color: #666;">Advanced YOLOv8 model for accurate accident detection with 95% confidence</p>
+            </div>
+            <div class="feature-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.7); border-radius: 15px;">
+                <i class="fas fa-bolt" style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3>Instant Alerts</h3>
+                <p style="color: #666;">Real-time WhatsApp notifications sent within seconds of detection</p>
+            </div>
+            <div class="feature-card" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.7); border-radius: 15px;">
+                <i class="fas fa-shield-alt" style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3>24/7 Monitoring</h3>
+                <p style="color: #666;">Continuous monitoring and analysis for maximum safety coverage</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('uploadedImage').addEventListener('change', function(e) {
+    const fileName = e.target.files[0]?.name;
+    if (fileName) {
+        const label = document.querySelector('label[for="uploadedImage"]');
+        label.innerHTML = `<i class="fas fa-file"></i> ${fileName}`;
+        document.querySelector('.file-upload-area').style.borderColor = '#22c55e';
+        document.querySelector('.file-upload-area').style.background = 'rgba(34, 197, 94, 0.1)';
+    }
+});
+</script>
+{% endblock %}

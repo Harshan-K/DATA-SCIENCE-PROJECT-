@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}About - Accident Detection System{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h1 style="font-size: 2.5rem; font-weight: 700; color: #333; margin-bottom: 1rem;">
+            <i class="fas fa-info-circle"></i> About AccidentGuard AI
+        </h1>
+        <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto;">
+            Advanced AI-powered accident detection system designed to save lives through instant emergency response
+        </p>
+    </div>
+
+    <!-- Mission Section -->
+    <div style="margin-bottom: 3rem;">
+        <h2 style="color: #333; margin-bottom: 1.5rem; text-align: center;">
+            <i class="fas fa-bullseye"></i> Our Mission
+        </h2>
+        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 2rem; border-radius: 15px; text-align: center;">
+            <p style="font-size: 1.1rem; color: #333; line-height: 1.6; margin: 0;">
+                To revolutionize road safety by leveraging cutting-edge artificial intelligence to detect accidents in real-time 
+                and ensure immediate emergency response, ultimately saving lives and reducing the impact of traffic incidents.
+            </p>
+        </div>
+    </div>
+
+    <!-- Technology Stack -->
+    <div style="margin-bottom: 3rem;">
+        <h2 style="color: #333; margin-bottom: 1.5rem; text-align: center;">
+            <i class="fas fa-cogs"></i> Technology Stack
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fas fa-brain" style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3 style="color: #333; margin-bottom: 0.5rem;">YOLOv8 AI Model</h3>
+                <p style="color: #666; font-size: 0.9rem;">State-of-the-art object detection for accurate accident identification</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fab fa-python" style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3 style="color: #333; margin-bottom: 0.5rem;">Python & Flask</h3>
+                <p style="color: #666; font-size: 0.9rem;">Robust backend framework for reliable system performance</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3 style="color: #333; margin-bottom: 0.5rem;">Twilio WhatsApp API</h3>
+                <p style="color: #666; font-size: 0.9rem;">Instant messaging for emergency notifications</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fas fa-eye" style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;"></i>
+                <h3 style="color: #333; margin-bottom: 0.5rem;">OpenCV</h3>
+                <p style="color: #666; font-size: 0.9rem;">Advanced computer vision for image and video processing</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features -->
+    <div style="margin-bottom: 3rem;">
+        <h2 style="color: #333; margin-bottom: 1.5rem; text-align: center;">
+            <i class="fas fa-star"></i> Key Features
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div style="display: flex; align-items: flex-start; padding: 1.5rem; background: rgba(255,255,255,0.8); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fas fa-lightning-bolt" style="font-size: 2rem; color: #667eea; margin-right: 1rem; margin-top: 0.5rem;"></i>
+                <div>
+                    <h3 style="color: #333; margin-bottom: 0.5rem;">Real-time Detection</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">
+                        Instant analysis of uploaded images and videos with sub-2-second processing time
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; padding: 1.5rem; background: rgba(255,255,255,0.8); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fas fa-bullseye" style="font-size: 2rem; color: #667eea; margin-right: 1rem; margin-top: 0.5rem;"></i>
+                <div>
+                    <h3 style="color: #333; margin-bottom: 0.5rem;">95% Accuracy</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">
+                        High-precision accident detection with advanced confidence scoring
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; padding: 1.5rem; background: rgba(255,255,255,0.8); border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #667eea; margin-right: 1rem; margin-top: 0.5rem;"></i>
+                <div>
+                    <h3 style="color: #333; margin-bottom: 0.5rem;">Instant Alerts</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">
+                        Immediate WhatsApp notifications to emergency contacts and authorities
+                    </p>
+                </div>
+            </div>
+            <div style="display: flex; align-items: flex-start; padding: 1.5rem; background: rgba(255,255,255,0.8); border-radius: 15px; box-shadow: 0 4x 15px rgba(0,0,0,0.1);">
+                <i class="fas fa-chart-line" style="font-size: 2rem; color: #667eea; margin-right: 1rem; margin-top: 0.5rem;"></i>
+                <div>
+                    <h3 style="color: #333; margin-bottom: 0.5rem;">Analytics Dashboard</h3>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">
+                        Comprehensive reporting and performance metrics for system monitoring
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Specifications -->
+    <div style="margin-bottom: 3rem;">
+        <h2 style="color: #333; margin-bottom: 1.5rem; text-align: center;">
+            <i class="fas fa-server"></i> System Specifications
+        </h2>
+        <div style="background: rgba(255,255,255,0.8); padding: 2rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Processing Speed</h4>
+                    <p style="color: #333; font-weight: 600;">< 2 seconds per file</p>
+                </div>
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Supported Formats</h4>
+                    <p style="color: #333; font-weight: 600;">JPG, PNG, GIF, MP4, AVI, MOV</p>
+                </div>
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Detection Accuracy</h4>
+                    <p style="color: #333; font-weight: 600;">95% confidence threshold</p>
+                </div>
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">System Uptime</h4>
+                    <p style="color: #333; font-weight: 600;">99.9% availability</p>
+                </div>
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Response Time</h4>
+                    <p style="color: #333; font-weight: 600;">< 5 seconds notification</p>
+                </div>
+                <div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">File Size Limit</h4>
+                    <p style="color: #333; font-weight: 600;">Up to 100MB per file</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Information -->
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 15px; text-align: center;">
+        <h2 style="color: white; margin-bottom: 1rem;">
+            <i class="fas fa-envelope"></i> Get in Touch
+        </h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.9;">
+            Have questions or need support? We're here to help make roads safer.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+            <div>
+                <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                support@accidentguard.ai
+            </div>
+            <div>
+                <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                +1 (555) 123-4567
+            </div>
+            <div>
+                <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>
+                www.accidentguard.ai
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

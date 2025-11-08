@@ -1,0 +1,156 @@
+/* Reset defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #e74c3c, #e67e22);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.feature {
+  background-color: #fdfdfd;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.feature h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #e74c3c;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Upload Section */
+.upload-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f4f6f9;
+}
+
+.upload-section form {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* File input styling */
+.upload-section input[type="file"] {
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.upload-section input[type="file"]:hover {
+  border-color: #e74c3c;
+  transform: scale(1.05);
+}
+
+/* Submit Button - E-commerce style */
+.upload-section input[type="submit"] {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #e74c3c, #ff6f00);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect: shine animation */
+.upload-section input[type="submit"]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  transition: all 0.7s ease;
+}
+
+.upload-section input[type="submit"]:hover::after {
+  left: 125%;
+}
+
+.upload-section input[type="submit"]:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 10px;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+}
