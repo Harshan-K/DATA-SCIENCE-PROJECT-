@@ -22,8 +22,8 @@ def allowed_file(filename):
 
 def send_whatsapp_notification(message):
     try:
-        account_sid = "AC5801f476fea235cd6ed2b62457f3c988"
-        auth_token = "e4b4b65334574f0c56f4cf3c8b4f096a"
+        account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+        auth_token = os.getenv('TWILIO_AUTH_TOKEN')
         from_whatsapp = "+14155238886"
         to_whatsapp = "+917604990626"
         

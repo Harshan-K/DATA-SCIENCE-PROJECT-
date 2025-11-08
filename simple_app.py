@@ -14,7 +14,9 @@ def allowed_file(filename):
 
 def send_whatsapp(message):
     try:
-        client = Client('AC5801f476fea235cd6ed2b62457f3c988', 'e4b4b65334574f0c56f4cf3c8b4f096a')
+        account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+        auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+        client = Client(account_sid, auth_token)
         msg = client.messages.create(
             body=message,
             from_='whatsapp:+14155238886',
