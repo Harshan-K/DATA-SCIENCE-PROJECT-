@@ -1,4 +1,4 @@
-# Traffic And Accident Detection System ⚠️🚗💥
+# Traffic And Accident AI Detection System ⚠️🚗💥
 
 A comprehensive accident detection system that automatically detects accidents in uploaded images/videos and sends WhatsApp notifications to emergency contacts. Built with YOLOv8, Flask, and Twilio.
 
